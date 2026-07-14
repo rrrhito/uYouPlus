@@ -60,6 +60,10 @@ jobs:
           path: main
           submodules: recursive
 
+      - name: Patch RYD incompatible pointer type
+        run: |
+          sed -i '' '31s|.*|    NSMutableArray *mutableCategories = [_logos_orig$_ungrouped$YTSettingsGroupData$orderedCategories(self, _cmd) mutableCopy];|' main/Tweaks/Return-YouTube-Dislikes/Settings.x
+
       - name: Caching brew dependencies
         id: brew_cache
         uses: tecolicom/actions-use-homebrew-tools@v1.2
